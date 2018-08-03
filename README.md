@@ -6,7 +6,7 @@
 3. Create a folder with your name, ex: firstname_lastname
 4. Add this repo as a REMOTE to your locally cloned copy.
  ```
- git remote add upstream https://github.com/CodingDojoDallas/python_july_2018.git
+ git remote add upstream https://github.com/CodingDojoDallas/python_aug_2018.git
  ```
 
 # Daily Commits
