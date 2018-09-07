@@ -1,0 +1,4 @@
+Error: pymysql.err.OperationalError: (1045, "Access denied for user 'root'@'localhost' (using password: YES)")
+
+
+Fix: Supply the correct password to pymysql.connect()

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Travel Dashboard</title>
+<style type="text/css">
+	h1 {
+		display: inline-block;
+		margin: 10px 20px 10px 10px;
+	}
+
+	form a {
+		font-size: 20px;
+	}
+
+	table {
+		margin: 20px 0px;
+	}
+
+	div#logout {
+		align-content: right;
+		display: inline-block;
+		margin: 5px 0px 5px 600px;
+	}
+
+	button#logout {
+		padding: 7px;
+		height: 30px;
+		width: 150px;
+		margin: 10px 10px 5px 30px;
+		display: inline-block;
+		background-color: blue;
+		color: white;
+		box-shadow: 8px 8px 6px black;
+	}
+
+</style>
+</head>
+<body>
+	<form action="logout" method="post">
+		{% csrf_token %}
+		<h1>Welcome {{ user.first_name }}!</h1>
+		<div id="logout">
+			<a href="/add"">Add a Trip</a>
+			<a href="/logout">Logout</a>
+		</div>
+	</form>
+
+	<h1>Your Trip Schedules</h1>
+
+	{% if user.my_trips %}
+	<table>
+	<tr>
+		<th>Destination</th>
+		<th>Travel Start Date</th>
+		<th>Travel End Date</th>
+		<th>Description</th>
+		<th>Action</th>
+	</tr>
+
+    {% for trip in user.my_trips.all %}
+    <tr>
+    	<td><a href="view/{{ trip.id }}">{{ trip.destination }}</a></td>
+    	<td>{{ trip.start_date }}</td>
+    	<td>{{ trip.end_date }}</td>
+    	<td>{{ trip.description }}</td>
+    	<td>
+    		<a href="cancel/{{ trip.id }}/{{ user.id }}">Cancel  </a>
+    		
+    		{% if trip.planned_by_id == user.id %}
+			<a href="/delete/{{ trip.id }}">Delete  </a>
+			{% endif %}
+    	</td>
+	</tr>
+	{% endfor %}
+	{% endif %}
+
+	<p><h1>Other User's Travel Plans</h1></p>
+
+	{% if other_trips %}
+	<table>
+	<tr>
+		<th>Destination</th>
+		<th>Travel Start Date</th>
+		<th>Travel End Date</th>
+		<th>Do You Want To Join?</th>
+	</tr>
+
+	{% for trip in other_trips %}
+
+    <tr>
+
+    	<td><a href="view/{{ trip.id }}">{{ trip.destination }}</a></td>
+    	<td>{{ trip.start_date }}</td>
+    	<td>{{ trip.end_date }}</td>
+    	<td><a href="join/{{ trip.id }}">Join  </a></td>
+    </tr>
+    {% endfor %}
+    </table>
+    {% endif %}
+</body>
+</html>

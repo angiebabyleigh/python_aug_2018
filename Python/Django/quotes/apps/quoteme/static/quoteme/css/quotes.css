@@ -1,0 +1,76 @@
+button {
+	padding: 7px;
+	height: 30px;
+	width: 150px;
+	background-color: blue;
+	color: white;
+	box-shadow: 8px 8px 6px black;
+	margin: 10px 10px 5px 305px;
+	display: block;
+}
+
+a {
+	font-size: 20px;
+	display: inline-block;
+}
+
+h1 {
+	display: inline-block;
+	width: 730px;
+}
+
+div#add {
+	align-content: right;
+	display: inline-block;
+	width: 600px;
+	margin: 20px 20px 20px 600px;
+}
+
+
+input[type="text"] {
+	width: 250px;
+	height: 30px;
+	margin: 5px 10px 5px 10px;
+	font-size: 30px;
+}
+
+div#logout {
+	align-content: right;
+	display: inline-block;
+}
+
+button#logout {
+	padding: 7px;
+	height: 30px;
+	width: 150px;
+	margin: 10px 10px 5px 30px;
+	display: inline-block;
+	background-color: blue;
+	color: white;
+	box-shadow: 8px 8px 6px black;
+}
+
+textarea {
+	width: 255px;
+	font-size: 30px;
+	display: inline-block;
+	margin: 5px 10px 5px 5px;
+
+}
+
+label {
+	width: 170px;
+	font-size: 30px;
+	display: inline-block;
+	margin: 5px 10px 5px 5px;
+	text-align: right;
+}
+
+h2 { 
+	text-align: center;
+}
+
+div.quote {
+	width:; 650px
+	border: 1px solid black;
+}

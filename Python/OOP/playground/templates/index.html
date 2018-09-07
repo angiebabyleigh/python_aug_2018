@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Playground</title>
+<style>
+	body {
+    	background-color: royalblue;
+	}
+
+	h1 {
+	    text-align: center;
+	    font-size: 60px;
+	    margin: 80px;
+	}
+
+	div {
+		height: 275px;
+		width: 275px;
+		display: inline-block;
+		margin: 20px;
+		padding: 40px;
+	}
+</style>
+</head>
+<body>
+	<h1 style="color: {{ color }};">Welcome!</h1>
+
+	{% for x in range(0, num) %}
+    <div style="background-color: {{ color }};"></div>
+    {% endfor %}
+
+</body>
+</html>

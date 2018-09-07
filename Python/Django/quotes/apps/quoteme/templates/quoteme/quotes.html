@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Quotes</title>
+<style type="text/css">
+	button {
+		padding: 7px;
+		height: 30px;
+		width: 150px;
+		background-color: blue;
+		color: white;
+		box-shadow: 8px 8px 6px black;
+		margin: 10px 10px 5px 305px;
+		display: block;
+	}
+
+	a {
+		font-size: 20px;
+		display: inline-block;
+	}
+
+	h1 {
+		display: inline-block;
+		width: 730px;
+	}
+
+	div#add {
+		align-content: right;
+		display: inline-block;
+		width: 600px;
+		margin: 20px 20px 20px 600px;
+	}
+
+
+	input[type="text"] {
+		width: 250px;
+		height: 30px;
+		margin: 5px 10px 5px 10px;
+		font-size: 30px;
+	}
+
+	div#logout {
+		align-content: right;
+		display: inline-block;
+	}
+
+	button#logout {
+		padding: 7px;
+		height: 30px;
+		width: 150px;
+		margin: 10px 10px 5px 30px;
+		display: inline-block;
+		background-color: blue;
+		color: white;
+		box-shadow: 8px 8px 6px black;
+	}
+
+	.like {
+		padding: 7px;
+		height: 30px;
+		width: 100px;
+		margin: 10px 0px 5px 10px;
+		display: inline-block;
+		background-color: grey;
+		color: white;
+		box-shadow: 8px 8px 6px black;
+	}
+	textarea {
+		width: 255px;
+		height: 250px;
+		font-size: 30px;
+		display: inline-block;
+		margin: 5px 10px 5px 5px;
+
+	}
+
+	.howmany {
+		font-size: 20px;
+		margin: 5px 20px 5px -25px;
+		width: 225px;
+	}
+
+	label {
+		width: 170px;
+		font-size: 30px;
+		display: inline-block;
+		margin: 5px 10px 5px 5px;
+		text-align: right;
+	}
+
+	h2 { 
+		text-align: center;
+	}
+
+	div.quote {
+		width: 350px;
+		border: 1px solid black;
+		padding: 20px;
+		margin: 30px;
+		font-size: 20px;
+	}
+
+	div.left {
+		width: 400px;
+		display: inline-block;
+		background-color: yellow;
+		vertical-align: top;
+	}
+
+	div.right {
+		width: 00px;
+		display: inline-block;
+		vertical-align: top;
+		background-color: blue;
+	}
+
+</style>
+</head>
+<body>
+	<form action="logout" method="post">
+		{% csrf_token %}
+		<h1>Welcome {{ user.first_name }} {{ user.last_name }}!</h1>
+		<div id="logout">
+			<a href="/myaccount/{{ user.id }}"">Edit My Account</a>
+			<button type="submit" id="logout">Logout</button>
+		</div>
+	</form>
+	<div id="right">
+		<form action="add" method="post">
+			{% csrf_token %}
+			<div id="add">
+				<h2>Add a Quote!</h2>
+
+				<label for="author">Author:</label>
+				<input type="text" name="author">
+
+
+				<label for="quote">Quote:</label>
+				<textarea name="quote"></textarea>
+
+				<button type="submit">Submit</button>
+			</div>
+		</form>
+	</div>
+	
+	<div id="left">
+		{% if quotes %}
+	    {% for quote in quotes %}
+    	<div class="quote">
+    		<form action="like" method="post">
+    			{% csrf_token %}
+				<p>{{ quote.author }}: {{ quote.quote }}</p>
+				<p>Posted by: <a href="user/{{ quote.user_id }}">{{ quote.user.first_name }} {{ quote.user.last_name }}</a></p>
+				<label class="howmany">{{ quote.likes.count }} people liked this quote</label>
+				<button type="submit" class="like">Like</button>
+				
+				{% if quote.user.id == user.id %}
+				<p><a href="/delete/{{ quote_id }}">Delete</a></p>
+				{% endif %}
+
+				<input type="hidden" name="show" value="true">
+				<input type="hidden" name="quote_id" value="{{ quote.id }}">
+				<input type="hidden" name="user_id" value="{{ user.id }}">
+			</form>
+		</div>
+	    {% endfor %}
+	    {% endif %}
+	</div>
+</body>
+</html>

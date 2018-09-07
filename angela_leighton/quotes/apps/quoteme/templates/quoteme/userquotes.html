@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>User Quotes</title>
+
+<style type="text/css">
+	div#logout {
+		align-content: right;
+		display: inline-block;
+	}
+
+	h1 {
+		display: inline-block;
+		width: 800px;
+	}
+
+	a {
+		font-size: 20px;
+		display: inline-block;
+	}
+
+	button#logout {
+		padding: 7px;
+		height: 30px;
+		width: 150px;
+		margin: 10px 10px 5px 30px;
+		display: inline-block;
+		background-color: blue;
+		color: white;
+		box-shadow: 8px 8px 6px black;
+	}
+
+	div.quote {
+		width: 350px;
+		border: 1px solid black;
+		padding: 20px;
+		margin: 30px;
+		font-size: 20px;
+	}
+	
+</style>
+</head>
+<body>
+	<form action="logout" method="post">
+		{% csrf_token %}
+		<div id="logout">
+			<h1>{{ user.first_name }} {{ user.last_name }}'s Quotes</h1>
+			<a href="quoteme/quotes.html">Back</a>
+			<button type="submit" id="logout">Logout</button>
+		</div>
+
+		{% for quote in quotes %}
+			<div class="quote">
+				<p>{{ quote.author }}: {{ quote.quote }}</p>
+			</div>
+	    {% endfor %}
+	</form>
+</body>
+</html>

@@ -1,0 +1,39 @@
+div {
+	width: 650px;
+}
+
+input[type="text"] {
+	width: 250px;
+	height: 30px;
+	margin: 5px 10px 5px 10px;
+}
+
+input[type="password"] {
+	width: 250px;
+	height: 30px;
+	margin: 5px 10px 5px 10px;
+}
+
+label {
+	width: 170px;
+	font-size: 30px;
+	display: inline-block;
+	margin: 5px 10px 5px 5px;
+	text-align: right;
+}
+
+button {
+	padding: 7px;
+	height: 30px;
+	width: 150px;
+	margin: 10px 10px 5px 305px;
+	display: block;
+	background-color: blue;
+	color: white;
+	box-shadow: 8px 8px 6px black;
+
+}
+p s{
+	color: red;
+	font-size: 25px;
+}

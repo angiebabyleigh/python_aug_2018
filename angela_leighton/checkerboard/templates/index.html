@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Checker Board</title>
+<style>
+	div {
+		width: 75px;
+		height: 75px;
+		display: inline-block;
+		margin: 0px;
+		border: 0px;
+		padding: 0px;
+	}
+	div.row {
+		width: 1070px;
+		margin: 0px;
+		border: 0px;
+		padding: 0px;
+	}
+</style>
+</head>
+<body>
+
+	{% for x in range (rows) %}
+		<div class="row">
+			{% for x in range(cols) %}
+			<div style="background-color: blue"></div>
+		    <div style="background-color: pink"></div>
+			{% endfor %}
+		</div>
+		<div class="row">
+			{% for x in range(cols) %}
+		    <div style="background-color: pink"></div>
+		    <div style="background-color: blue"></div>
+		    {% endfor %}
+		</div>
+	 {% endfor %}
+</body>
+</html>

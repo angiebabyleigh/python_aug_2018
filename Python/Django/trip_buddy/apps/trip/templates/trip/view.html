@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>View Trip</title>
+<style type="text/css">
+	
+	div#logout {
+		align-content: right;
+		display: inline-block;
+		margin: 5px 5px 5px 600px;
+	}
+
+	div.job {
+		margin: 10px;
+		width: 225px;
+	}
+</style>
+</head>
+<body>
+
+{% load i18n %}
+	<form action="logout" method="post">
+		{% csrf_token %}
+		<div id="logout">
+			<h1></h1>
+			<a href="/dashboard">Back</a>
+			<a href="/logout">Logout</a>
+		</div>
+	</form>
+
+	<p><h1>{{ trip.destination }}</h1></p>
+
+	<div class="trip">
+		<p>Planned By: {{ trip.planned_by.first_name }} {{ trip.planned_by.last_name }}</p>
+		<p>Description: {{ trip.description }}</p>
+		<p>Travel Date From: {{ trip.start_date }}</p>
+		<p>Travel Date To: {{ trip.end_date }}</p>
+	</div>
+
+	<p><h1>Other Users Joining the Trip:</h1></p>
+		{% if travelers %}
+		{% for p in travelers %}
+		{% if p.id != user.id %}
+			<p>{{ p.first_name }} {{ p.last_name }}</p>
+		{% endif %}
+		{% endfor %}
+		{% endif %}
+
+	<div class="trip">
+
+		
+	</div>
+</body>
+</html>

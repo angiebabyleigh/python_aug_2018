@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login & Reg Home</title>
+<style type="text/css">
+	div {
+		width: 650px;
+	}
+
+	.pass {
+		width: 250px;
+		height: 30px;
+		margin: 5px 10px 5px 10px;
+	}
+
+	input[type="password"] {
+		width: 250px;
+		height: 30px;
+		margin: 5px 10px 5px 10px;
+	}
+
+	input[type="text"] {
+		width: 250px;
+		height: 30px;
+		margin: 5px 10px 5px 10px;
+	}
+
+	label {
+		width: 170px;
+		font-size: 30px;
+		display: inline-block;
+		margin: 5px 10px 5px 5px;
+		text-align: right;
+	}
+
+	button {
+		padding: 7px;
+		height: 30px;
+		width: 150px;
+		margin: 10px 10px 5px 305px;
+		display: block;
+		background-color: blue;
+		color: white;
+		box-shadow: 8px 8px 6px black;
+
+	}
+</style>
+</head>
+<body>
+	<form action="register" method="post">
+		{% csrf_token %}
+		<h1>Registration</h1>
+		{% if messages %}
+		{% for message in messages %}
+			<p>{{ message }}</p>
+		{% endfor %}
+		{% endif %}
+		<div>
+			<label for="first">First Name:</label>
+			<input type="text" name="first">
+
+			<label for="last">Last Name:</label>
+			<input type="text" name="last">
+
+			<label for="email">Email:</label>
+			<input type="text" name="email">
+
+			<label for="passwd">Password:</label>
+			<input type="password" class="pass" name="passwd">
+
+			<label for="confirm">Confirm pw:</label>
+			<input type="password" class="pass" name="confirm">
+
+			<button type="submit">Register</button>
+		</div>
+	</form>
+
+	<form action="login" method="post">
+		{% csrf_token %}
+		<h1>Login</h1>
+		<div>
+			<label for="email">Email:</label>
+			<input type="text" name="email">
+
+			<label for="passwd">Password:</label>
+			<input type="password" class="pass" name="passwd">
+
+			<button type="submit">Login</button>
+		</div>
+	</form>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My Friends!</title>
+<style type="text/css">
+	
+	th {
+    	background-color: grey;
+    	color: white;
+    	height: 40px;
+	}
+
+	tr {
+		height: 20px;
+		margin: 5px;
+		padding: 5px;
+	}
+
+	tr:nth-child(even) {
+		background-color: lightgrey;
+	}
+
+	table {
+    	width: 300px;
+	}
+
+	button {
+		background-color: lightgreen;
+		color: black;
+		display: block;
+		width: 100px;
+		height: 30px;
+		border-radius: 10px;
+	}
+
+	div {
+		display: block;
+		width: 300px;
+		padding: 10px;
+		background-color: grey;
+		border-radius: 10px;
+	}
+
+	input[type=text], select {
+		padding: 10px;
+		width: 135px; 
+		border-radius: 10px;
+	}
+
+	label {
+		width: 200px;
+	}
+
+
+
+</style>
+</head>
+<body>
+	<h1>These are my friends!!</h1>
+	<table>
+		<tr>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Occupation</th>
+		</tr>
+		
+		{% for friend in friends %}
+		<tr>
+			<td>{{ friend['first_name'] }}</td>
+			<td>{{ friend['last_name'] }}</td>
+			<td>{{ friend['occupation'] }}</td>
+		</tr>
+		{% endfor %}
+	</table>
+
+	<h1>Add a Friend</h1>
+		<div>
+			<form action="/addfriend" method="POST">
+				<label for="first">First Name:</label>
+				<input type="text" name="first">
+				<label for="last">Last Name:</label>
+				<input type="text" name="last">
+				<label for="job">Occupation:</label>
+				<input type="text" name="job">
+				<button type="submit" name="add">Add</button>
+			</form>
+		</div>
+
+</body>
+</html>

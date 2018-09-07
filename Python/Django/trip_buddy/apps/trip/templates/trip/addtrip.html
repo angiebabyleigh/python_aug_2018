@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Add a Trip</title>
+<style type="text/css">
+	input[type="text"] {
+		width: 250px;
+		height: 30px;
+		margin: 5px 10px 5px 10px;
+	}
+
+	input[type="date"] {
+		width: 250px;
+		height: 30px;
+		margin: 5px 10px 5px 10px;
+	}
+
+	label {
+		width: 170px;
+		font-size: 30px;
+		display: inline-block;
+		margin: 5px 10px 5px 5px;
+		text-align: right;
+	}
+
+	textarea {
+		width: 255px;
+		height: 250px;
+		font-size: 30px;
+		display: inline-block;
+		margin: 5px 10px 5px 5px;
+
+	}
+
+	button {
+		padding: 7px;
+		height: 30px;
+		width: 150px;
+		margin: 10px 10px 5px 305px;
+		display: block;
+		background-color: blue;
+		color: white;
+		box-shadow: 8px 8px 6px black;
+	}
+
+	a {
+		font-size: 20px;
+		display: inline-block;
+		margin: 2px 5px;
+	}
+
+	h1 {
+		display: inline-block;
+		width: 800px;
+	}
+
+	div#logout {
+		align-content: right;
+		display: inline-block;
+	}
+
+	div#add {
+		align-content: right;
+		display: inline-block;
+		width: 600px;
+	}
+	
+	p {
+		color: red;
+		font-size: 25px;
+	}
+
+</style>
+</head>
+<body>
+	{% if messages %}
+    {% for msg in messages %}
+		<p>{{ msg }}</p>
+    {% endfor %}
+	{% endif %}
+	<form action="logout" method="post">
+		{% csrf_token %}
+		<div id="logout">
+			<h1></h1>
+			<a href="/dashboard">Back</a>
+			<a href="logout">Logout</a>
+		</div>
+	</form>
+
+	<div id="add">
+		<form action="addTrip" method="post">
+			{% csrf_token %}
+			<h2>Add a Trip</h2>
+
+			<label for="destination">Destination:</label>
+			<input type="text" name="destination">
+
+
+			<label for="description">Description:</label>
+			<input type="text" name="description"></input>
+
+
+			<label for="startdate">Travel From Date:</label>
+			<input type="date" name="startdate"></input>
+
+
+			<label for="enddate">Travel To Date:</label>
+			<input type="date" name="enddate"></input>
+
+
+			<button type="submit">Submit</button>
+		</form>
+	</div>
+</body>
+</html>

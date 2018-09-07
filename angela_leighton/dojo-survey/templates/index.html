@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dojo Survey</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}">
+</head>
+<body>
+	<form action="/return" method="post">
+		Your Name: <input type="text" name="name">
+		<label>Dojo Location:</label>
+		<select id="location" name="location" >
+	 		<option value="dallas">Dallas, TX</option>
+			<option value="la">Los Angeles, CA</option>
+			<option value="seattle">Seattle, WA</option>
+			<option value="tulsa">Tulsa, OK</option>
+		</select>	
+
+		<label>Favorite Language:</label>
+		<select id="language" name="language">
+	 		<option value="html">HTML</option>
+			<option value="python">Python</option>
+			<option value="javascript">JavaScript</option>
+			<option value="ruby">Ruby</option>
+			<option value="mean">Mean</option>
+		</select>
+		<div>
+			<label for "comment">Comment (optional)</label>
+			<textarea name="comment"></textarea>
+		</div>
+		<input type="submit" value="Submit">
+</body>
+</html>
+
+
+<!-- { #VALUES('"request.form['first'] + "', '" + request.form['last'] + "', '" request.form['job'] "', NOW(), NOW());" #} -->

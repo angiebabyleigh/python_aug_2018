@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Handy Helper Dashboard</title>
+<style type="text/css">
+	h1 {
+		display: inline-block;
+		margin: 5px 20px 10px 0px;
+	}
+
+	form a {
+		font-size: 20px;
+	}
+
+	table {
+		margin: 20px 0px;
+	}
+
+	div#logout {
+		align-content: right;
+		display: inline-block;
+	}
+
+
+</style>
+</head>
+<body>
+	<form action="logout" method="post">
+		{% csrf_token %}
+		<h1>Welcome {{ user.first_name }}!</h1>
+		<div id="logout">
+			<a href="/myaccount/{{ user.id }}"">Add a Trip</a>
+			<button type="submit" id="logout">Logout</button>
+		</div>
+	</form>
+
+		{% if all_jobs %}
+		<table>
+		<tr>
+			<th>Job</th>
+			<th>Location</th>
+			<th>Action</th>
+		</tr>
+	    {% for job in all_jobs %}
+	    <tr>
+	    	<td>{{ job.title }}</td>
+	    	<td>{{ job.location }}</td>
+	    	<td>
+	    		<a href="view/{{ job.id }}">View  </a>
+	    		<a href="/accept/{{ job.id }}">add  </a>
+	    		
+	    		{% if job.created_by_id == user.id %}
+	    		<a href="/edit/{{ job.id }}">edit  </a>
+				<a href="/delete/{{ job.id }}">cancel  </a>
+				{% endif %}
+	    	</td>
+	    </tr>
+	    {% endfor %}
+		</table>
+	    {% endif %}
+
+		{% if my_jobs %}
+		<table>
+		<tr>
+			<th>My Jobs</th>
+		</tr>
+	    {% for job in my_jobs %}
+	    <tr>
+	    	<td>{{ job.title }}</td>
+	    	<td>
+	    		<a href="view/{{ job.id }}">View  </a>
+	    		<a href="/complete/{{ job.id }}">Done  </a>
+	    	</td>
+	    </tr>
+	    {% endfor %}
+	    </table>
+	    {% endif %}
+</body>
+</html>
